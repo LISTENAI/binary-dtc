@@ -1,19 +1,13 @@
-import * as download from 'download';
+import download from '@xingrz/download2';
 import { rm } from 'fs/promises';
-import { platform } from 'os';
-import { join } from 'path';
+import { HOME } from './index';
 
-const PREFIX = 'https://cdn.iflyos.cn/public/lisa-binary/dtc/';
+const PACKAGE = 'dtc';
+const VERSION = '1.6.0';
 
-const NAME = (() => {
-  switch (platform()) {
-    case 'win32': return 'dtc-1.5.1-2-windows_x86_64.zip';
-    case 'darwin': return 'dtc-1.6.0-mac_amd64.tar.gz';
-    default: return 'dtc-1.6.0-1-linux_amd64.tar.gz';
-  }
-})();
+const NAME = `${PACKAGE}-${VERSION}-${process.platform}_${process.arch}.tar.zst`;
 
-const HOME = join(__dirname, '..', 'binary');
+const URL = `https://cdn.iflyos.cn/public/lisa-binary/${PACKAGE}/${NAME}`;
 
 (async () => {
 
@@ -22,7 +16,7 @@ const HOME = join(__dirname, '..', 'binary');
   } catch (e) {
   }
 
-  await download(`${PREFIX}${NAME}`, HOME, {
+  await download(URL, HOME, {
     extract: true,
   });
 
