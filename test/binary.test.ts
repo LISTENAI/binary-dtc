@@ -6,7 +6,7 @@ test('homeDir', () => {
 });
 
 test('binaryDir', () => {
-  expect(typeof binary.binaryDir == 'undefined' || isAbsolute(binary.binaryDir)).toBe(true);
+  expect(isAbsolute(binary.binaryDir)).toBe(true);
 });
 
 test('version()', async () => {
