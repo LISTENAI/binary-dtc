@@ -12,6 +12,10 @@ export default <Binary>{
 
   binaryDir: join(HOME, 'bin'),
 
+  libraryDir: process.platform == 'linux'
+    ? join(HOME, 'lib', 'x86_64-linux-gnu')
+    : undefined,
+
   async version() {
     const { stdout } = await execFile(join(this.binaryDir, 'dtc'), ['--version']);
     return stdout.split('\n')[0].trim();

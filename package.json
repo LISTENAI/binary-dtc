@@ -19,7 +19,7 @@
   ],
   "license": "UNLICENSED",
   "dependencies": {
-    "@binary/type": "^1.0.3",
+    "@binary/type": "^1.0.4",
     "@xingrz/download2": "^9.0.0-alpha.2"
   },
   "devDependencies": {
