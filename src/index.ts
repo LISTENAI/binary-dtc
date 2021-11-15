@@ -17,7 +17,11 @@ export default <Binary>{
     : undefined,
 
   async version() {
-    const { stdout } = await execFile(join(this.binaryDir, 'dtc'), ['--version']);
+    const { stdout } = await execFile(join(this.binaryDir, 'dtc'), ['--version'], {
+      env: {
+        LD_LIBRARY_PATH: this.libraryDir,
+      },
+    });
     return stdout.split('\n')[0].trim();
   }
 };
